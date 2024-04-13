@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placas sudeste e centro oeste</title>
+</head>
+
+<body>
+
+    <h1> De onde é sua Placa?</h1>
+    <input type="text" name="placa" id="placa"> <!-- Caixa de texto para digitar -->
+    <button onclick="verificaEstado()"> Inserir Placa. </button>
+    <div id="placaDigitada"> </div>
+
+    <script>
+
+        function verificaEstado() {
+            var placa = window.document.querySelector('input#placa').value.toUpperCase();
+
+            // Verifica os 3 primeiros caracteres da placa
+            var prefixo = placa.substring(0, 3);
+
+            // armazena os prefixos das placas de Minas Gerais em um array.
+            var minasGerais = ['GKJ', 'HOK', 'NXX', 'NYG', 'OLO', 'OMH', 'OOV', 'ORC', 'OWH', 'OXK', 'PUA', 'PZZ', 'QMQ', 'QQZ', 'QUA', 'QUZ', 'QWR', 'QXZ', 'RFA', 'RGD', 'RMD', 'RNZ', 'RTA', 'RVZ'];
+            // e verifica se na placa digitada pelo usuário está inclusa (includes) no array de Minas Gerais.
+            if (minasGerais.includes(prefixo)) {
+                var placaDigitada = window.document.querySelector('div#placaDigitada');
+                placaDigitada.innerHTML = '<br><strong>Sua placa é de Minas Gerais';
+                return;
+            }
+
+            var goias = ['SBW', 'SDS', 'RBK', 'RCN', 'QTN', 'QTS', 'PQA', 'PRZ', 'OMI', 'OOF', 'OGH', 'OHA', 'NVO', 'NWR', 'NJX', 'NLU', 'NFC', 'NGZ', 'KAV', 'KFC'];
+            if (goias.includes(prefixo)) {
+                var placaDigitada = window.document.querySelector('div#placaDigitada');
+                placaDigitada.innerHTML = '<br><strong>Sua placa é de Goiás';
+                return;
+            }
+
+            var distritoFederal = ['JDP', 'JKR', 'OVM', 'OVV', 'OZW', 'PBZ', 'REC', 'REV'];
+            if (distritoFederal.includes(prefixo)) {
+                var placaDigitada = window.document.querySelector('div#placaDigitada');
+                placaDigitada.innerHTML = '<br><strong>Sua placa é do Distrito Federal';
+                return;
+            }
+
+            // Se não pertencer a nenhuma das regiões
+            var placaDigitada = window.document.querySelector('div#placaDigitada');
+            placaDigitada.textContent = 'Placa não pertence ao Sudeste ou Centro-Oeste';
+        }
+
+    </script>
+
+    
+</body>
+
+</html>
